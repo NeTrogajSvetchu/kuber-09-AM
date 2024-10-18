@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-frontend
+  name: nginx-only
+  namespace: kub-9
+spec:
+  selector:
+    matchLabels:
+      app: nginx-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx-frontend
+    spec:
+      containers:
+        - name: nginx-app
+          image: nginx:1.25.4
